@@ -80,3 +80,33 @@ anotherNewListItem.innerHTML = "take a <strong>break</strong>";
 
 // parent-------------item to insert------reference item
 todoList.insertBefore(anotherNewListItem, newListItem);
+
+function addTodo() {
+  const newTodo = document.createElement("li");
+
+  //   const input = document.getElementsByTagName('input')[0]
+  const input = document.querySelector("input");
+
+  newTodo.innerText = input.value;
+
+  const parent = document.getElementById("todo-list");
+
+  parent.appendChild(newTodo);
+
+  newTodo.onclick = toggleTodo;
+}
+
+document.getElementById("add-todo").onclick = addTodo;
+
+console.log("one time only");
+document.querySelectorAll("#todo-list li").forEach(function(item) {
+  item.onclick = toggleTodo;
+});
+
+// change the style of the clicked element to add the `checked` class to it
+// bonus make it toggle on and off
+
+function toggleTodo(event) {
+  //   the `event` object is passed as the first parameter describes the click event
+  event.currentTarget.classList.toggle("checked");
+}
